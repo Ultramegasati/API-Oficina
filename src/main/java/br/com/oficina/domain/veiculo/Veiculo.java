@@ -1,5 +1,14 @@
 package br.com.oficina.domain.veiculo;
 
+import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Embeddable
+@Getter            //gerar os getters
+@NoArgsConstructor  //gerar construtor sem argumentos
+@AllArgsConstructor   //construtor que recebe todos os campos
 public class Veiculo {
 
     private String marca;
@@ -7,7 +16,7 @@ public class Veiculo {
     private String ano;
     private String motor;
     private String placa;
-    private String complemento;
+    private String adicionais;
 
 
 
@@ -21,7 +30,7 @@ public class Veiculo {
         this.ano = dadosDoVeiculo.ano();
         this.motor = dadosDoVeiculo.motor();
         this.placa = dadosDoVeiculo.placa();
-        this.complemento = dadosDoVeiculo.complemento();
+        this.adicionais = dadosDoVeiculo.adicionais();
 
     }
 

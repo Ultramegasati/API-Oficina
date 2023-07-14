@@ -1,5 +1,14 @@
 package br.com.oficina.domain.endereco;
 
+import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Embeddable
+@Getter            //gerar os getters
+@NoArgsConstructor  //gerar construtor sem argumentos
+@AllArgsConstructor   //construtor que recebe todos os campos
 public class Endereco {
 
     private String logradouro;
