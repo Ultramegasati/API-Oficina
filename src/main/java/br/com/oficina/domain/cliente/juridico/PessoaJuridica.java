@@ -27,6 +27,8 @@ public class PessoaJuridica {
     private String telefone;
     private String telefone1;
     private String telefone2;
+    private Boolean ativo;
+
     private Endereco endereco;
     private Veiculo veiculo;
 
@@ -37,6 +39,7 @@ public class PessoaJuridica {
 
 
     public PessoaJuridica(DadosCadastroPessoaJuridica dadosCadastroPessoaJuridica){
+        this.ativo = true;
         this.razaoSocial = dadosCadastroPessoaJuridica.razaoSocial();
         this.cnpj = dadosCadastroPessoaJuridica.cnpj();
         this.telefone = dadosCadastroPessoaJuridica.telefone();
@@ -49,4 +52,33 @@ public class PessoaJuridica {
     }
 
 
+    public void atualizarInformaces(DadosAtualizacaoClienteJuridico dadosAtualizacaoClienteJuridico) {
+        if (dadosAtualizacaoClienteJuridico.razaoSocial() != null){
+            this.razaoSocial = dadosAtualizacaoClienteJuridico.razaoSocial();
+        }
+
+        if (dadosAtualizacaoClienteJuridico.email() != null){
+            this.email = dadosAtualizacaoClienteJuridico.email();
+        }
+
+        if (dadosAtualizacaoClienteJuridico.telefone() != null){
+            this.telefone = dadosAtualizacaoClienteJuridico.telefone();
+        }
+
+        if (dadosAtualizacaoClienteJuridico.telefone1() != null){
+            this.telefone1 = dadosAtualizacaoClienteJuridico.telefone1();
+        }
+
+        if (dadosAtualizacaoClienteJuridico.telefone2() != null){
+            this.telefone2 = dadosAtualizacaoClienteJuridico.telefone2();
+        }
+
+        if (dadosAtualizacaoClienteJuridico.endereco() != null){
+            this.endereco.atualizaInformacoesDoEndereco(dadosAtualizacaoClienteJuridico.endereco());
+        }
+    }
+
+    public void exclusaoLogica() {
+        this.ativo = false;
+    }
 }

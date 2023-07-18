@@ -28,6 +28,7 @@ public class PessoaFisica {
     private String telefone;
     private String telefone1;
     private String telefone2;
+    private Boolean ativo;
 
     private Endereco endereco;
     private Veiculo veiculo;
@@ -36,6 +37,7 @@ public class PessoaFisica {
 
     public PessoaFisica(DadosCadastroPessoaFisica dados){
 
+        this.ativo = true;
         this.nome = dados.nome();
         this.cpf = dados.cpf();
         this.email = dados.email();
@@ -48,4 +50,35 @@ public class PessoaFisica {
     }
 
 
+    public void atualizarInfromacoes(DadosAtualizacaoClienteFisico dadosAtualizacaoClienteFisico) {
+        if (dadosAtualizacaoClienteFisico.nome() != null){
+            this.nome = dadosAtualizacaoClienteFisico.nome();
+        }
+
+        if (dadosAtualizacaoClienteFisico.email() != null){
+            this.email = dadosAtualizacaoClienteFisico.email();
+        }
+
+        if (dadosAtualizacaoClienteFisico.telefone() != null){
+            this.telefone = dadosAtualizacaoClienteFisico.telefone();
+        }
+
+        if (dadosAtualizacaoClienteFisico.telefone1() != null){
+            this.telefone1 = dadosAtualizacaoClienteFisico.telefone1();
+        }
+
+        if (dadosAtualizacaoClienteFisico.telefone2() != null){
+            this.telefone2 = dadosAtualizacaoClienteFisico.telefone2();
+        }
+
+        if (dadosAtualizacaoClienteFisico.endereco() != null){
+            this.endereco.atualizaInformacoesDoEndereco(dadosAtualizacaoClienteFisico.endereco());
+        }
+    }
+
+
+    //método da exclusão lógica
+    public void excluir() {
+        this.ativo = false;
+    }
 }
