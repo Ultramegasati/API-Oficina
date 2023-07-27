@@ -29,7 +29,10 @@ public class PessoaJuridica {
     private String telefone2;
     private Boolean ativo;
 
+    @Embedded
     private Endereco endereco;
+
+    @Embedded
     private Veiculo veiculo;
 
 

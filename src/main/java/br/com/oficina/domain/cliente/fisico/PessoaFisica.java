@@ -20,7 +20,6 @@ public class PessoaFisica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
     private String nome;
     private String cpf;
@@ -30,7 +29,10 @@ public class PessoaFisica {
     private String telefone2;
     private Boolean ativo;
 
+    @Embedded
     private Endereco endereco;
+
+    @Embedded
     private Veiculo veiculo;
 
 
@@ -48,6 +50,8 @@ public class PessoaFisica {
         this.veiculo = new Veiculo(dados.veiculo());
 
     }
+
+
 
 
     public void atualizarInfromacoes(DadosAtualizacaoClienteFisico dadosAtualizacaoClienteFisico) {

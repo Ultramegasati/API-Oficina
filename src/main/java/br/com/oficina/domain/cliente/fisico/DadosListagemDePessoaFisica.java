@@ -10,11 +10,19 @@ public record DadosListagemDePessoaFisica(
         String nome,
         String email,
         String telefone,
+        String telefone1,
+        String telefone2,
         Endereco endereco
 
 ) {
 
     public DadosListagemDePessoaFisica(PessoaFisica pessoaFisica) {
-        this(pessoaFisica.getId(), pessoaFisica.getNome(), pessoaFisica.getEmail(), pessoaFisica.getTelefone(), pessoaFisica.getEndereco());
+        this(pessoaFisica.getId(),
+                pessoaFisica.getNome(),
+                pessoaFisica.getEmail(),
+                pessoaFisica.getTelefone(),
+                pessoaFisica.getTelefone1(),
+                pessoaFisica.getTelefone2(),
+                pessoaFisica.getEndereco());
     }
 }

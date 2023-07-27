@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/clienteFisico")
 public class ClienteFisicoController {
 
     @Autowired
     private PessoaFisicaRepository repository;
+
+
+
 
 
     //Testando se esta recebendo a requisição
@@ -28,7 +32,11 @@ public class ClienteFisicoController {
     repository.save(new PessoaFisica(dados));//dados, pegando do construtor
 
 
+
     }
+
+
+
 
 
 //    @GetMapping // apenas fazendo leitura de todo o bd
@@ -55,14 +63,43 @@ public class ClienteFisicoController {
 //        return repository.findAll().stream().map(DadosListagemVeiculoPessoaFisica :: new).toList();
 //    }
 
+
+    @GetMapping("listarLogicosExcluidos")
+    public Page listarClienteFisicosExcluidosLogicos(@PageableDefault(size = 10,sort = {"nome"})Pageable paginacao){
+        return repository.findAllByAtivoFalse(paginacao).map(DadosListagemDePessoaFisica::new);
+    }
+
+
     @GetMapping("/listarVeiculo")  //paginação
     public Page<DadosListagemVeiculoPessoaFisica> listarVeiculo(@PageableDefault(size = 10,sort = {"nome"})Pageable paginacao){
             return repository.findAllByAtivoTrue(paginacao).map(DadosListagemVeiculoPessoaFisica :: new);
 
 
-            //trazendo todos ativos e inativos
+            //trazendo todos, ativos e inativos
         //        return repository.findAll(paginacao).map(DadosListagemVeiculoPessoaFisica :: new);
     }
+
+
+
+
+
+    @PostMapping("/buscaPorNome")
+    public List listarClienteFisicoPorNome(@RequestBody  DadosListagemPorNomeDePessoaFisica dados){
+        //return  repository.findAllByNomeStartingWithOrderByNome(dados.nome());
+        return repository.searchByNomeStartingWithOrderByNome(dados.nome());
+
+    }
+
+    @PostMapping("/buscaPorPlaca")
+    public List listarClienteFisicoPorPlaca(@RequestBody DadosPesquisaPorPlacaDePessoaFisica dados){
+
+        return repository.findByVeiculo_Placa(dados.placa());
+
+    }
+
+
+
+
 
 
 

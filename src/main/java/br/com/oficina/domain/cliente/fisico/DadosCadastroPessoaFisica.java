@@ -24,9 +24,9 @@ public record DadosCadastroPessoaFisica(
         String telefone1,
         String telefone2,
         @NotNull
-        @Valid   //informando que é um bean e te que validar os campos dele
+        @Valid   //informando que é um bean e tem que validar os campos dele
         DadosDoEndereco endereco,
         @NotNull
-        @Valid   //informando que é um bean e te que validar os campos dele
+        @Valid   //informando que é um bean e tem que validar os campos dele
         DadosDoVeiculo veiculo) {
 }

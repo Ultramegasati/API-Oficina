@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+
 @Embeddable
 @Getter            //gerar os getters
 @NoArgsConstructor  //gerar construtor sem argumentos
